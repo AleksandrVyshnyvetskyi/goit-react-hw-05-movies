@@ -6,7 +6,7 @@ import { TrendingList } from 'components/trending/trending';
 export function Home() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [errors, setError] = useState('');
   const [page, setPage] = useState(1);
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export function Home() {
           }
         });
       } catch (error) {
-        setError(error);
+        setError(errors);
       } finally {
         setLoading(false);
       }
