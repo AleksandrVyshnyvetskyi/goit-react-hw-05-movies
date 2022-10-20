@@ -59,6 +59,7 @@ export function Home() {
         <h2>Trending today:</h2>
       </div>
       {loading ? <Loader /> : <TrendingList movies={movies} />}
+      {error && <h4>Oops... Something broke... Try again</h4>}
       {TrendingList && (
         <button type="button" onClick={loadMore} className="btn">
           Load more...
