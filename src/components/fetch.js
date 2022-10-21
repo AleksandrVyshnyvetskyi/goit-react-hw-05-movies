@@ -10,6 +10,4 @@ const fetchRequest = async page => {
   return response.data;
 };
 
-console.log(fetchRequest());
-
 export { fetchRequest };
