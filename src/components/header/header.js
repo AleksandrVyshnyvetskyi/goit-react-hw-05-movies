@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom';
 
 const navItem = [
-  { href: 'home', text: 'Home' },
-  { href: 'movies', text: 'Movies' },
+  { href: 'home', text: 'Головна' },
+  { href: 'movies', text: 'Фільми' },
 ];
 
 export const Header = () => {

@@ -50,21 +50,21 @@ export function Home() {
   }, [page]);
 
   const loadMore = () => {
-    setPage(prev => prev + 1);
+    setPage(prevState => prevState + 1);
   };
 
   return (
     <>
       <div className="title-box">
-        <h2>Trending today:</h2>
+        <h2>Сьогодні в тренді:</h2>
       </div>
       {loading ? <Loader /> : <TrendingList movies={movies} />}
-      {error && <h4>Oops... Something broke... Try again</h4>}
+      {error && <h4>Упссс...Щось зламалося... Спробуй ще...</h4>}
       {TrendingList && (
         <div className="btn-box">
           {' '}
           <button type="button" onClick={loadMore} className="btn">
-            Load more...
+            Показати більше
           </button>
         </div>
       )}
