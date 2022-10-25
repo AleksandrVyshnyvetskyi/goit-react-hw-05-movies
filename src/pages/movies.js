@@ -74,15 +74,17 @@ export function MovieGallery() {
   const isMovies = Boolean(movies.length);
   return (
     <div>
-      <h3>Будьласка, введіть назву фільму</h3>
+      <h3 className="movies-title">Будьласка, введіть назву фільму:</h3>
       <Search onSubmit={handleSubmitSearchForm} />
       {loading ? <Loader /> : <p></p>}
       {error && <h4>Упссс...Щось зламалося... Спробуй ще...</h4>}
       {movies && <TrendingList movies={movies} />}
       {isMovies && (
-        <button type="button" onClick={loadMore} className="btn">
-          Показати більше
-        </button>
+        <div className="centre">
+          <button type="button" onClick={loadMore} className="btn">
+            Показати більше
+          </button>
+        </div>
       )}
     </div>
   );

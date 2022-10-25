@@ -33,7 +33,7 @@ const fetchActorsMovie = async id => {
 
 const fetchReviews = async id => {
   const response = await axios.get(
-    `${BASE_URL}movie/${id}/reviews?api_key=${KEY_API}&language=uk&page=1`
+    `${BASE_URL}movie/${id}/reviews?api_key=${KEY_API}&language=en-US&page=1`
   );
   return response.data;
 };

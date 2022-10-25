@@ -17,20 +17,18 @@ export function Search({ onSubmit }) {
   };
 
   return (
-    <header>
-      <form onSubmit={hendleSubmitSearchForm}>
-        <input
-          onChange={hendleChangeInputSearch}
-          name="searchName"
-          value={searchName}
-          type="text"
-          autoFocus
-          placeholder="Назва фільму"
-        />
-        <button type="submit" className="button">
-          <span>Пошук</span>
-        </button>
-      </form>
-    </header>
+    <form onSubmit={hendleSubmitSearchForm}>
+      <input
+        onChange={hendleChangeInputSearch}
+        name="searchName"
+        value={searchName}
+        type="text"
+        autoFocus
+        placeholder="Назва фільму"
+      />
+      <button className="input-btn" type="submit">
+        Пошук
+      </button>
+    </form>
   );
 }

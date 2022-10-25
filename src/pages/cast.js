@@ -27,7 +27,7 @@ export function Cast() {
   }, [id]);
 
   return (
-    <div>
+    <div className="cast_list">
       <h3>Актори:</h3>
       {loading ? <Loader /> : <p></p>}
       {state && <CastList actorsList={state} />}

@@ -46,55 +46,63 @@ export function SingleMoviePage() {
     fetchInfMovie();
   }, [id]);
 
-  const goBackHomePage = () => navigate('/');
+  const goBackHomePage = () => navigate('/home');
   const goBackMoviesPage = () => navigate('/movies');
 
   return (
     <div>
-      <button type="button" onClick={goBackHomePage}>
-        Повернутися на головну
-      </button>
-      <button type="button" onClick={goBackMoviesPage}>
-        Повернутися до фільмів
-      </button>
+      <div className="btn-box">
+        <button
+          className="btn btn-mar-right"
+          type="button"
+          onClick={goBackHomePage}
+        >
+          Повернутися на головну
+        </button>
+        <button className="btn" type="button" onClick={goBackMoviesPage}>
+          Повернутися до фільмів
+        </button>
+      </div>
+
       {loading && <Loader />}
       {error && <h4>Упссс...Щось зламалося... Спробуй ще...</h4>}
       {state && (
         <>
-          <div>
-            <img
-              src={`${imageURL}${state.poster_path}`}
-              alt={state.tagline}
-              width="300"
-            />
-            <ul>
-              <li>
-                <h2>{state.title ? state.title : state.name}</h2>
-                <b>({state.release_date.substr(0, 4)})</b>
-              </li>
-              <li>
-                <b>Рейтинг:</b>
-                <i>{Math.round(state.vote_average * 10)} %</i>
-              </li>
-              <li>
-                <b>Опис:</b>
-                <i>{state.overview}</i>
-              </li>
-              <li>
-                <b>Жанр:</b>
-                <i>{genresList}</i>
-              </li>
-            </ul>
+          <div className="centre">
+            <div className="one_movie_box">
+              <img
+                className="poster_one_movie"
+                src={`${imageURL}${state.poster_path}`}
+                alt={state.tagline}
+                width="300"
+              />
+              <ul className="one_movie_info">
+                <li className="one_movie_info--item">
+                  <h2>
+                    "{state.title ? state.title : state.name}"<span> | </span>
+                    {state.release_date.substr(0, 4)}
+                  </h2>
+                </li>
+                <li className="one_movie_info--item">
+                  <b>Рейтинг:</b>
+                  <i>{Math.round(state.vote_average * 10)} %</i>
+                </li>
+                <li className="one_movie_info--item">
+                  <b>Опис:</b>
+                  <i>{state.overview}</i>
+                </li>
+                <li className="one_movie_info--item">
+                  <b>Жанр:</b>
+                  <i className="genres">{genresList}</i>
+                </li>
+              </ul>
+            </div>
           </div>
-          <h3>Інша інформація:</h3>
-          <ul>
-            <li>
-              <NavLink to={castLink}>Актори</NavLink>
-            </li>
-            <li>
-              <NavLink to={reviewsLink}>Відгуки</NavLink>
-            </li>
-          </ul>
+          <div className="more_info">
+            <h3 className="more_info_titile">Інша інформація:</h3>
+            <NavLink to={castLink}>Актори</NavLink>
+            <NavLink to={reviewsLink}>Відгуки</NavLink>
+          </div>
           <Outlet />
         </>
       )}

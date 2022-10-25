@@ -23,7 +23,7 @@ export const App = () => {
   return (
     
         <Routes>     
-            <Route path='/' element={<Layout/>}>
+            <Route path='/' element={<Layout />}>
               <Route path='home' element={<div className="pad15 centre"><Home/></div>}></Route>
               <Route path='movies' element={<div className="pad15"><MovieGallery /></div>}></Route>
               <Route path="/movies/:id" element={<SingleMoviePage />}>

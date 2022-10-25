@@ -10,7 +10,6 @@ export function Reviews() {
   const [error, setError] = useState('');
 
   const { id } = useParams();
-  console.log(state);
   useEffect(() => {
     const fetchInfReviews = async () => {
       setLoading(true);
@@ -28,7 +27,7 @@ export function Reviews() {
   const isState = Boolean(state.length);
 
   return (
-    <div>
+    <div className="pad15">
       <h3>Останні відгуки:</h3>
       {loading ? <Loader /> : <p></p>}
       {isState ? (
