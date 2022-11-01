@@ -33,7 +33,7 @@ export const App = () => {
               {/* ================================================================================ */}
               
 
-        <>
+
             {/* <Navbar/>
             <Suspense fallback={<Loader/>}>
             <Routes>
@@ -46,7 +46,7 @@ export const App = () => {
                 <Route path="*" element={<NotFoundPage />} />
                 </Routes>
                 </Suspense> */}
-        </>
+
 
 
 
