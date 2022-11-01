@@ -12,7 +12,7 @@ export const App = () => {
   const NotFoundPage = lazy(() => import('./pages/notFoundPage'));
 
   return (
-    <Suspense fallback={<div className='centre'><Loader/></div>}>
+    <Suspense fallback={<div className='background'><div className='centre'><Loader/></div></div>}>
         <Routes>     
               <Route path='/' element={<Home/>}></Route>
               <Route path='movies' element={<MovieGallery />}></Route>
