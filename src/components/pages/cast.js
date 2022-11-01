@@ -4,7 +4,7 @@ import { fetchActorsMovie } from 'components/fetch';
 import { CastList } from 'components/castList';
 import { Loader } from 'components/Loader/Loader';
 
-export function Cast() {
+export default function Cast() {
   const [state, setState] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');

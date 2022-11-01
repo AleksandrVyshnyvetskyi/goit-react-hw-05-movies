@@ -5,8 +5,10 @@ import { usePrevious } from 'components/hooks/usePrevious';
 import { fetchMovieByName } from 'components/fetch';
 import { Search } from 'components/Search/search';
 import { TrendingList } from 'components/trending/trending';
+import { Header } from 'components/header/header';
+import { Logo } from 'components/Logo/Logo';
 
-export function MovieGallery() {
+export default function MovieGallery() {
   const [movies, setMovies] = useState(
     JSON.parse(localStorage.getItem('listmovies')) ?? []
   );
@@ -74,18 +76,26 @@ export function MovieGallery() {
   const isMovies = Boolean(movies.length);
   return (
     <div>
-      <h3 className="movies-title">Будьласка, введіть назву фільму:</h3>
-      <Search onSubmit={handleSubmitSearchForm} />
-      {loading ? <Loader /> : <p></p>}
-      {error && <h4>Упссс...Щось зламалося... Спробуй ще...</h4>}
-      {movies && <TrendingList movies={movies} />}
-      {isMovies && (
-        <div className="centre">
-          <button type="button" onClick={loadMore} className="btn">
-            Показати більше
-          </button>
+      <div className="background">
+        <div className="container">
+          <div className="header-nav">
+            <Header />
+            <Logo />
+          </div>
+          <h3 className="movies-title">Будьласка, введіть назву фільму:</h3>
+          <Search onSubmit={handleSubmitSearchForm} />
+          {loading ? <Loader /> : <p></p>}
+          {error && <h4>Упссс...Щось зламалося... Спробуй ще...</h4>}
+          {movies && <TrendingList movies={movies} />}
+          {isMovies && (
+            <div className="centre">
+              <button type="button" onClick={loadMore} className="btn">
+                Показати більше
+              </button>
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </div>
   );
 }

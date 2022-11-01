@@ -4,7 +4,7 @@ import { fetchReviews } from 'components/fetch';
 import { RewiewsList } from 'components/rewiesList';
 import { Loader } from 'components/Loader/Loader';
 
-export function Reviews() {
+export default function Reviews() {
   const [state, setState] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');

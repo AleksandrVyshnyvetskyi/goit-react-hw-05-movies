@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 import { fetchRequest } from 'components/fetch';
 import { Loader } from 'components/Loader/Loader';
 import { TrendingList } from 'components/trending/trending';
+import { Header } from 'components/header/header';
+import { Logo } from 'components/Logo/Logo';
 
-export function Home() {
+export default function Home() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -54,20 +56,26 @@ export function Home() {
   };
 
   return (
-    <>
-      <div className="title-box">
-        <h2>Сьогодні в тренді:</h2>
-      </div>
-      {loading ? <Loader /> : <TrendingList movies={movies} />}
-      {error && <h4>Упссс...Щось зламалося... Спробуй ще...</h4>}
-      {TrendingList && (
-        <div className="btn-box">
-          {' '}
-          <button type="button" onClick={loadMore} className="btn">
-            Показати більше
-          </button>
+    <div className="background">
+      <div className="container">
+        <div className="header-nav">
+          <Header />
+          <Logo />
         </div>
-      )}
-    </>
+        <div className="title-box">
+          <h2>Сьогодні в тренді:</h2>
+        </div>
+        {loading ? <Loader /> : <TrendingList movies={movies} />}
+        {error && <h4>Упссс...Щось зламалося... Спробуй ще...</h4>}
+        {TrendingList && (
+          <div className="btn-box">
+            {' '}
+            <button type="button" onClick={loadMore} className="btn">
+              Показати більше
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
   );
 }

@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 
 const navItem = [
-  { href: 'home', text: 'Головна' },
+  { href: '/', text: 'Головна' },
   { href: 'movies', text: 'Фільми' },
 ];
 

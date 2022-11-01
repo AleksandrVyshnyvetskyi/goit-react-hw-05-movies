@@ -1,58 +1,27 @@
 import { Route, Routes } from 'react-router-dom';
-
-import { Layout } from './Layout/Layout'
-import { Home } from 'pages/home';
-import { MovieGallery } from 'pages/movies';
-import { SingleMoviePage } from 'pages/single';
-import { Cast } from 'pages/cast';
-import { Reviews } from 'pages/rewies';
-// import { Loader } from './Loader/Loader';
+import { lazy, Suspense  } from 'react';
 import './styles.css'
-
-
-
-// const Navbar = lazy(() => import("./NavBar/NavBar"));
-// const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
-// const SingleMoviePage = lazy(() => import("./pages/SingleMoviePage/SingleMoviePage"));
-// const Cast = lazy(() => import("./pages/SingleMoviePage/Cast/Cast"));
-// const Reviews = lazy(() => import("./pages/SingleMoviePage/Reviews/Reviews"));
-
-
+import { Loader } from './Loader/Loader';
 
 export const App = () => {
+  const Home = lazy(() => import('./pages/home'));
+  const MovieGallery = lazy(() => import('./pages/movies'));
+  const SingleMoviePage = lazy(() => import('./pages/single'));
+  const Cast = lazy(() => import('./pages/cast'));
+  const Reviews = lazy(() => import('./pages/rewies'));
+  const NotFoundPage = lazy(() => import('./pages/notFoundPage'));
+
   return (
-    
+    <Suspense fallback={<div className='centre'><Loader/></div>}>
         <Routes>     
-            <Route path='/' element={<Layout />}>
-              <Route path='home' element={<div className="pad15 centre"><Home/></div>}></Route>
-              <Route path='movies' element={<div className="pad15"><MovieGallery /></div>}></Route>
+              <Route path='/' element={<Home/>}></Route>
+              <Route path='movies' element={<MovieGallery />}></Route>
               <Route path="/movies/:id" element={<SingleMoviePage />}>
                     <Route path="cast" element={<Cast />} />
                     <Route path="reviews" element={<Reviews />} />
-                </Route>
-              {/* ================================================================================ */}
-              
-
-
-            {/* <Navbar/>
-            <Suspense fallback={<Loader/>}>
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/movies" element={<Movies />} />
-                <Route path="/movies/:id" element={<SingleMoviePage />}>
-                    <Route path="cast" element={<Cast />} />
-                    <Route path="reviews" element={<Reviews />} />
-                </Route>
-                <Route path="*" element={<NotFoundPage />} />
-                </Routes>
-                </Suspense> */}
-
-
-
-
-              {/* ================================================================================ */}
-            </Route>
+              </Route>
+              <Route path="*" element={<NotFoundPage />} />
         </Routes>
-    
+    </Suspense>
   );
 };
